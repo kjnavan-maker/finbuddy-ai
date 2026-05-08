@@ -1,0 +1,49 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": ["hello", "hi", "hey", "good morning", "good evening", "how are you", "start", "hi finbuddy"],
+      "responses": ["Hello! I am FinBuddy AI. How can I help your money goals today?", "Hi there! Ready to track spending or plan a budget?", "Hey! I can help with expenses, budgets, summaries, and saving tips."]
+    },
+    {
+      "tag": "add_expense",
+      "patterns": ["add expense", "I spent 500 on food", "record expense", "spent 1200 for transport", "add 300 groceries", "save expense", "track my spending"],
+      "responses": ["Sure. Tell me the amount and category, for example: I spent 500 on food.", "I can record that. Use: spent 1000 on transport."]
+    },
+    {
+      "tag": "monthly_summary",
+      "patterns": ["monthly summary", "show my spending", "expense report", "how much did I spend", "total spending", "highest spending category", "this month report"],
+      "responses": ["Here is your monthly finance summary.", "Let me calculate your spending summary."]
+    },
+    {
+      "tag": "saving_tips",
+      "patterns": ["saving tips", "how to save money", "help me save", "reduce spending", "financial advice", "money saving advice"],
+      "responses": ["Try the 50/30/20 rule: 50% needs, 30% wants, 20% savings.", "Automate savings at the beginning of the month before spending.", "Review subscriptions and reduce repeated low-value spending."]
+    },
+    {
+      "tag": "budget_help",
+      "patterns": ["set budget", "budget help", "monthly budget", "my budget is 50000", "create budget", "compare budget", "am I over budget"],
+      "responses": ["I can help set and compare your monthly budget.", "Tell me your monthly budget, for example: set budget 50000."]
+    },
+    {
+      "tag": "finance_terms",
+      "patterns": ["what is interest", "explain inflation", "what is budget", "what is emergency fund", "define compound interest", "finance terms"],
+      "responses": ["Ask me a finance term like inflation, interest, budget, or emergency fund."]
+    },
+    {
+      "tag": "debt_advice",
+      "patterns": ["debt advice", "pay my loan", "credit card debt", "how to reduce debt", "loan repayment", "debt snowball"],
+      "responses": ["List your debts, interest rates, and minimum payments. Usually high-interest debt should be paid first.", "Consider the avalanche method for saving interest or the snowball method for motivation."]
+    },
+    {
+      "tag": "small_talk",
+      "patterns": ["thank you", "thanks", "you are helpful", "great", "nice", "bye", "goodbye"],
+      "responses": ["You are welcome! Keep building healthy money habits.", "Happy to help. Small smart decisions create big financial progress.", "Goodbye! Come back anytime for finance help."]
+    },
+    {
+      "tag": "unknown_questions",
+      "patterns": ["random unknown text", "something not in dataset", "teach mode", "unknown question"],
+      "responses": ["I am not fully sure yet. Could you teach me the best answer?", "I do not know that yet, but I can learn from you."]
+    }
+  ]
+}
