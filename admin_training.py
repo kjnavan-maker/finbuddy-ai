@@ -1,3 +1,7 @@
+from database import init_db, save_learned_response
+
+init_db()
+
 training_data = [
 
 # GREETINGS
@@ -462,3 +466,8 @@ training_data = [
 ("that is all", "Okay 😊 Happy to help with your financial journey."),
 ("no thanks", "No problem 😊 Come back anytime for finance advice."),
 ]
+
+for question, answer in training_data:
+    save_learned_response(1, question, answer)
+
+print("✅ Admin training completed successfully!")
