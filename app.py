@@ -32,6 +32,10 @@ app = Flask(__name__)
 app.secret_key = "change-this-secret-key-for-production"
 
 init_db()
+
+# Auto-load admin training data into online database
+import admin_training
+
 bot = FinBuddyAI()
 
 
