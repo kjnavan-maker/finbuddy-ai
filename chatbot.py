@@ -1,4 +1,4 @@
-"""NLP, inference engine, knowledge-base search, and self-learning logic for FinBuddy AI."""
+"""Professional NLP, inference engine, finance logic, and self-learning for FinBuddy AI."""
 
 import json
 import os
@@ -32,23 +32,26 @@ lemmatizer = WordNetLemmatizer()
 
 
 FINANCE_TERMS = {
-    "budget": "A budget is a financial plan for managing income, expenses, savings, and goals.",
-    "inflation": "Inflation is the increase in prices over time, which reduces purchasing power.",
-    "interest": "Interest is the cost of borrowing money or the reward for saving money.",
-    "compound interest": "Compound interest means earning interest on both original money and previous interest.",
-    "emergency fund": "An emergency fund is money saved for unexpected situations.",
-    "debt": "Debt is borrowed money that must be repaid.",
-    "savings": "Savings are money kept aside for future needs instead of being spent immediately.",
+    "budget": "A budget is a financial plan that helps you manage income, expenses, savings, and financial goals.",
+    "savings": "Savings are money kept aside for future needs, emergencies, or important goals.",
+    "saving": "Saving means keeping money aside before spending on wants.",
     "investment": "Investment means using money to buy assets that may grow in value over time.",
     "expense": "An expense is money spent on needs, wants, bills, or services.",
-    "emi": "EMI means Equated Monthly Installment, a fixed monthly loan repayment.",
+    "income": "Income is money you receive from salary, business, freelancing, or other sources.",
+    "salary": "Salary is fixed income received from employment.",
+    "debt": "Debt is borrowed money that must be repaid.",
     "loan": "A loan is borrowed money that must be repaid, usually with interest.",
+    "emi": "EMI means Equated Monthly Installment, a fixed monthly loan repayment.",
+    "interest": "Interest is the cost of borrowing money or the reward for saving money.",
+    "inflation": "Inflation means prices increase over time, reducing purchasing power.",
+    "emergency fund": "An emergency fund is money saved for unexpected situations.",
+    "compound interest": "Compound interest means earning interest on both original money and previous interest.",
     "asset": "An asset is something valuable that you own.",
     "liability": "A liability is money you owe to others.",
     "net worth": "Net worth is total assets minus total liabilities.",
     "nlp": "NLP means Natural Language Processing, which helps computers understand human language.",
     "knowledge base": "A knowledge base stores facts, learned answers, finance tips, expenses, and budgets.",
-    "inference engine": "An inference engine uses rules and user data to choose the best reply or advice."
+    "inference engine": "An inference engine uses rules and user data to choose the best reply or financial advice."
 }
 
 
@@ -107,7 +110,6 @@ class FinBuddyAI:
                 return random.choice(
                     intent.get("responses", ["I am still learning about that."])
                 )
-
         return "I am still learning about that."
 
     def search_learned_answer(self, user_id, message):
@@ -139,12 +141,16 @@ class FinBuddyAI:
 
     def parse_number(self, text):
         cleaned = (
-            text.replace(",", "")
+            text.lower()
+            .replace(",", "")
             .replace("/=", "")
             .replace("rs.", "")
             .replace("rs", "")
             .replace("lkr", "")
+            .replace("isn", "is ")
+            .replace("is", " ")
         )
+
         match = re.search(r"(\d+(?:\.\d+)?)", cleaned)
         return float(match.group(1)) if match else None
 
@@ -156,28 +162,28 @@ class FinBuddyAI:
         if not category:
             return "general"
 
-        if "food" in category or "meal" in category or "pizza" in category or "restaurant" in category:
+        if any(x in category for x in ["food", "meal", "pizza", "restaurant", "dining"]):
             return "food"
 
-        if "transport" in category or "bus" in category or "taxi" in category or "fuel" in category:
+        if any(x in category for x in ["transport", "bus", "taxi", "fuel", "travel"]):
             return "transport"
 
-        if "bill" in category or "electricity" in category or "water" in category or "internet" in category or "phone" in category:
+        if any(x in category for x in ["bill", "electricity", "water", "internet", "phone"]):
             return "bill"
 
-        if "rent" in category or "room" in category or "house rent" in category:
+        if any(x in category for x in ["rent", "room", "house rent"]):
             return "rent"
 
-        if "shopping" in category or "clothes" in category or "dress" in category:
+        if any(x in category for x in ["shopping", "clothes", "dress"]):
             return "shopping"
 
-        if "medical" in category or "hospital" in category or "medicine" in category:
+        if any(x in category for x in ["medical", "hospital", "medicine", "health"]):
             return "medical"
 
-        if "education" in category or "school" in category or "course" in category or "book" in category:
+        if any(x in category for x in ["education", "school", "course", "book", "exam"]):
             return "education"
 
-        if "entertainment" in category or "movie" in category or "game" in category:
+        if any(x in category for x in ["entertainment", "movie", "game"]):
             return "entertainment"
 
         return category
@@ -202,8 +208,7 @@ class FinBuddyAI:
                     category = match.group(1).strip()
                     amount = float(match.group(2))
 
-                category = self.normalize_category(category)
-                return amount, category
+                return amount, self.normalize_category(category)
 
         return None, None
 
@@ -216,54 +221,57 @@ class FinBuddyAI:
         savings = float(profile.get("savings") or 0)
 
         if not rows:
-            return "You have not recorded expenses this month yet. Try: I spent 500 on food."
+            return (
+                "📈 Monthly Financial Overview\n\n"
+                "I don’t see any expenses recorded for this month yet.\n\n"
+                "Once you share your monthly expenses, I can calculate your total spending, remaining budget, savings ratio, and financial health."
+            )
 
         total = sum(row["total"] for row in rows)
         top = rows[0]
 
         lines = []
-        lines.append("📊 Monthly Finance Summary")
+        lines.append("📈 Monthly Financial Overview")
         lines.append("")
-        lines.append(f"Total Expenses: Rs.{total:,.0f}")
+        lines.append(f"Total Monthly Expenses: Rs.{total:,.0f}")
 
         if salary:
-            remaining_after_expenses = salary - total
-            lines.append(f"Salary: Rs.{salary:,.0f}")
-            lines.append(f"Balance after expenses: Rs.{remaining_after_expenses:,.0f}")
+            balance_after_expenses = salary - total
+            lines.append(f"Monthly Income: Rs.{salary:,.0f}")
+            lines.append(f"Balance After Expenses: Rs.{balance_after_expenses:,.0f}")
 
         if savings:
-            lines.append(f"Saved Amount: Rs.{savings:,.0f}")
+            lines.append(f"Monthly Savings: Rs.{savings:,.0f}")
 
         lines.append("")
-        lines.append("Category Breakdown:")
+        lines.append("Spending Breakdown:")
 
         for row in rows:
-            lines.append(f"- {row['category'].title()}: Rs.{row['total']:,.0f}")
+            lines.append(f"• {row['category'].title()}: Rs.{row['total']:,.0f}")
 
         lines.append("")
         lines.append(f"Highest Spending Category: {top['category'].title()}")
 
         if budget:
             remaining = budget - total
+            lines.append(f"Monthly Budget: Rs.{budget:,.0f}")
 
             if remaining >= 0:
-                lines.append(f"Budget: Rs.{budget:,.0f}")
                 lines.append(f"Remaining Budget: Rs.{remaining:,.0f}")
             else:
-                lines.append(f"Budget: Rs.{budget:,.0f}")
-                lines.append(f"⚠️ You exceeded your budget by Rs.{abs(remaining):,.0f}")
+                lines.append(f"⚠️ Budget Exceeded By: Rs.{abs(remaining):,.0f}")
 
         if salary:
             expense_ratio = (total / salary) * 100
             lines.append("")
-            lines.append(f"Expense Ratio: {expense_ratio:.1f}% of salary")
+            lines.append(f"Expense Ratio: {expense_ratio:.1f}% of income")
 
             if expense_ratio > 80:
-                lines.append("⚠️ Your expenses are very high. Try reducing non-essential spending.")
+                lines.append("Recommendation: Your expenses are very high. Try reducing non-essential spending.")
             elif expense_ratio > 60:
-                lines.append("Your expenses are moderate-high. Try improving your savings rate.")
+                lines.append("Recommendation: Your expenses are manageable, but savings can still be improved.")
             else:
-                lines.append("Good job. Your expenses look controlled compared to salary.")
+                lines.append("Recommendation: Your spending looks well controlled compared to your income.")
 
         return "\n".join(lines)
 
@@ -275,7 +283,10 @@ class FinBuddyAI:
         savings = float(profile.get("savings") or 0)
 
         if not rows:
-            return "Start by tracking your expenses. Then I can give better personalized recommendations."
+            return (
+                "I can give more accurate recommendations once your expenses are recorded.\n"
+                "For now, focus on tracking your major monthly costs such as food, rent, transport, bills, and shopping."
+            )
 
         total = sum(r["total"] for r in rows)
         top = rows[0]
@@ -289,28 +300,26 @@ class FinBuddyAI:
             saving_ratio = (savings / salary) * 100 if savings else 0
 
             if expense_ratio > 80:
-                advice.append("⚠️ Your expenses are very high compared to your salary.")
+                advice.append("Your expenses are high compared to your income.")
             elif expense_ratio > 60:
-                advice.append("Your expenses are a little high. Try reducing wants.")
+                advice.append("Your spending level is moderate. Reducing flexible expenses can improve savings.")
             else:
-                advice.append("Your expense level looks manageable.")
+                advice.append("Your expense level looks financially manageable.")
 
             if savings:
                 if saving_ratio < 10:
-                    advice.append("Your savings rate is low. Try saving at least 10% to 20% of salary.")
+                    advice.append("Your savings rate is low. Aim for at least 10% to 20% of income.")
                 else:
-                    advice.append("Your savings habit is good. Keep improving it.")
+                    advice.append("Your savings habit is positive. Keep building it consistently.")
             else:
-                advice.append("Add your savings amount so I can calculate your savings rate.")
+                advice.append("Share your monthly savings so I can calculate your savings ratio.")
 
         if share > 40:
-            advice.append(
-                f"{top['category'].title()} is {share:.1f}% of your spending. Try reducing this category."
-            )
+            advice.append(f"{top['category'].title()} takes {share:.1f}% of your spending. This category may need review.")
         else:
-            advice.append("Your spending is reasonably balanced.")
+            advice.append("Your spending distribution looks reasonably balanced.")
 
-        advice.append(f"Extra tip: {tip}")
+        advice.append(f"Tip: {tip}")
 
         return " ".join(advice)
 
@@ -324,24 +333,22 @@ class FinBuddyAI:
         return None
 
     def salary_handler(self, user_id, message):
-        salary_keywords = ["salary", "income", "monthly income", "my pay"]
-
-        if any(word in message for word in salary_keywords):
+        if any(word in message for word in ["salary", "income", "monthly income", "my pay"]):
             amount = self.parse_number(message)
 
             if amount:
                 save_user_profile(user_id, salary=amount)
+
                 return (
-                    f"✅ Your salary Rs.{amount:,.0f} has been saved.\n"
-                    "Now add your expenses like: food expense 30000, rent 25000, transport expense 20000."
+                    f"✨ Great! Your monthly income of Rs.{amount:,.0f} has been recorded successfully.\n\n"
+                    "I can now help you build a smarter financial plan based on your income.\n\n"
+                    "Next, share your regular monthly expenses such as food, rent, transportation, bills, shopping, or entertainment."
                 )
 
         return None
 
     def savings_handler(self, user_id, message):
-        savings_keywords = ["saving", "savings", "save monthly", "saved"]
-
-        if any(word in message for word in savings_keywords):
+        if any(word in message for word in ["saving", "savings", "save monthly", "saved"]):
             amount = self.parse_number(message)
 
             if amount:
@@ -352,12 +359,17 @@ class FinBuddyAI:
 
                 if salary:
                     saving_ratio = (amount / salary) * 100
+
                     return (
-                        f"✅ Your monthly savings Rs.{amount:,.0f} has been saved.\n"
-                        f"Your savings rate is {saving_ratio:.1f}% of your salary."
+                        f"💰 Excellent! Your monthly savings of Rs.{amount:,.0f} has been recorded.\n\n"
+                        f"Your current savings rate is {saving_ratio:.1f}% of your monthly income.\n\n"
+                        "This helps me give better budget, savings, and purchase advice."
                     )
 
-                return f"✅ Your monthly savings Rs.{amount:,.0f} has been saved."
+                return (
+                    f"💰 Excellent! Your monthly savings of Rs.{amount:,.0f} has been recorded.\n\n"
+                    "Consistent savings are an important step toward financial stability."
+                )
 
         return None
 
@@ -366,19 +378,22 @@ class FinBuddyAI:
         salary = float(profile.get("salary") or 0)
 
         if salary <= 0:
-            return "Please tell me your salary first. Example: my salary is 120000"
+            return (
+                "To prepare a personalized budget recommendation, please share your monthly income first.\n\n"
+                "Example: my salary is 120000"
+            )
 
         needs = salary * 0.50
         wants = salary * 0.30
         savings = salary * 0.20
 
         return (
-            "💰 Suggested Monthly Budget Plan\n\n"
-            f"Salary: Rs.{salary:,.0f}\n"
-            f"Needs 50%: Rs.{needs:,.0f}\n"
-            f"Wants 30%: Rs.{wants:,.0f}\n"
-            f"Savings 20%: Rs.{savings:,.0f}\n\n"
-            "You can adjust this based on rent, food, bills, debt, and family responsibilities."
+            "📊 Personalized Monthly Budget Recommendation\n\n"
+            f"Monthly Income: Rs.{salary:,.0f}\n\n"
+            f"Essential Needs 50%: Rs.{needs:,.0f}\n"
+            f"Lifestyle Wants 30%: Rs.{wants:,.0f}\n"
+            f"Savings & Future Goals 20%: Rs.{savings:,.0f}\n\n"
+            "This is a recommended starting point. It can be adjusted based on rent, family responsibilities, debt payments, and long-term goals."
         )
 
     def financial_health_score(self, user_id):
@@ -390,10 +405,12 @@ class FinBuddyAI:
         total_expense = sum(row["total"] for row in rows)
 
         if salary <= 0:
-            return "Please add your salary first so I can calculate your financial health score."
+            return (
+                "I can calculate your financial health score after you share your monthly income.\n\n"
+                "Example: my salary is 120000"
+            )
 
         score = 100
-
         expense_ratio = (total_expense / salary) * 100 if total_expense else 0
         saving_ratio = (savings / salary) * 100 if savings else 0
 
@@ -426,11 +443,12 @@ class FinBuddyAI:
             status = "Risky"
 
         return (
-            f"📈 Financial Health Score: {score}/100\n"
+            "📊 Your Financial Health Analysis\n\n"
+            f"Score: {score}/100\n"
             f"Status: {status}\n"
             f"Expense Ratio: {expense_ratio:.1f}%\n"
             f"Savings Ratio: {saving_ratio:.1f}%\n\n"
-            "To improve your score: reduce unnecessary expenses, increase savings, and follow a monthly budget."
+            "To improve your score, reduce unnecessary expenses, increase savings gradually, and follow a realistic monthly budget."
         )
 
     def goal_advice(self, user_id, message):
@@ -458,86 +476,82 @@ class FinBuddyAI:
 
         if salary == 0:
             return (
-                f"Sure, I can help you plan for a {selected_goal}. "
-                "Please tell me your salary first. Example: my salary is 120000"
+                f"I can help you plan for a {selected_goal} professionally.\n\n"
+                "To check affordability, please share your monthly income first."
             )
 
         if savings == 0:
             return (
-                f"I know your salary is Rs.{salary:,.0f}. "
-                "Please tell me your monthly savings too. Example: my savings 10000"
+                f"Your monthly income is Rs.{salary:,.0f}.\n\n"
+                f"To give accurate advice about buying a {selected_goal}, please share your monthly savings as well."
             )
 
-        available_balance = salary - total_expense - savings
         saving_rate = (savings / salary) * 100 if salary else 0
 
         base = (
-            f"Based on your salary Rs.{salary:,.0f}, savings Rs.{savings:,.0f}, "
-            f"and recorded expenses Rs.{total_expense:,.0f}, "
+            f"Based on your income of Rs.{salary:,.0f}, monthly savings of Rs.{savings:,.0f}, "
+            f"and recorded expenses of Rs.{total_expense:,.0f}, "
         )
 
         if selected_goal in ["iphone", "phone", "laptop"]:
             if saving_rate < 10:
                 return (
                     base +
-                    f"buying a {selected_goal} should be delayed. Your savings rate is only {saving_rate:.1f}%. "
-                    "Try increasing savings to at least 10% to 20% before buying."
+                    f"buying a {selected_goal} right now may put pressure on your budget.\n\n"
+                    f"Your savings rate is {saving_rate:.1f}%. I recommend increasing savings first before making this purchase."
                 )
 
             return (
                 base +
-                f"you can plan to buy a {selected_goal}, but avoid loans. "
-                "Buy only if your emergency fund and monthly budget are safe."
+                f"buying a {selected_goal} looks manageable if your emergency fund is safe and you avoid unnecessary debt."
             )
 
         if selected_goal == "bicycle":
             return (
                 base +
-                "a bicycle is a smart low-cost goal. It can reduce transport expenses. "
-                "Try buying it using savings without a loan."
+                "a bicycle is a practical low-cost goal. It can also help reduce transport expenses."
             )
 
         if selected_goal == "bike":
             return (
                 base +
-                "a bike is possible if EMI, fuel, insurance, and service costs fit your budget. "
-                "Keep EMI below 15% to 20% of your salary."
+                "a bike may be manageable if you plan for fuel, insurance, service, and EMI carefully. Keep EMI below 15% to 20% of income."
             )
 
         if selected_goal == "car":
             return (
                 base +
-                "a car is a big financial decision. Save for a down payment first and keep EMI below 15% to 20% of salary."
+                "a car is a major financial decision. Save for a down payment first and keep total vehicle costs under control."
             )
 
         if selected_goal == "house":
             return (
                 base +
-                "a house is a long-term goal. Build a house fund, save for down payment, and avoid unaffordable loans."
+                "a house is a long-term goal. Build a separate house fund, save for down payment, and avoid unaffordable loans."
             )
 
         if selected_goal == "land":
             return (
                 base +
-                "land can be a long-term investment. Check legal documents, location, and affordability before buying."
+                "land can be a long-term investment. Check documents, location, legal clearance, and affordability before buying."
             )
 
         if selected_goal == "gold":
             return (
                 base +
-                "gold can be useful as a long-term asset, but buy using savings, not debt."
+                "gold can be useful as a long-term asset, but it is better to buy gradually using savings instead of debt."
             )
 
         return (
             base +
-            f"before buying a {selected_goal}, check whether it is a need or want and protect emergency savings."
+            f"before buying a {selected_goal}, check whether it is a need or want and protect your emergency savings."
         )
 
     def reply(self, user_id, message):
         message = message.lower().strip()
 
         if not message:
-            return {"reply": "Please type a message so I can help.", "intent": "empty"}
+            return {"reply": "Please enter your financial question or expense details 😊", "intent": "empty"}
 
         # 1. Teach command
         if message.startswith("teach:"):
@@ -548,12 +562,12 @@ class FinBuddyAI:
                 save_learned_response(user_id, question.strip(), answer.strip())
 
                 return {
-                    "reply": "Thank you! I learned that answer globally. Now all users can use it. 🧠",
+                    "reply": "Done. I have learned this response and it is now available for users.",
                     "intent": "self_learning"
                 }
 
             return {
-                "reply": "Use this format: teach: your question => the correct answer",
+                "reply": "Please use this format: teach: your question => the correct answer",
                 "intent": "self_learning_help"
             }
 
@@ -571,11 +585,12 @@ class FinBuddyAI:
         amount, category = self.parse_expense(message)
         if amount and category:
             add_expense(user_id, amount, category, message)
+
             return {
                 "reply": (
-                    f"✅ Expense added successfully!\n"
-                    f"Amount: Rs.{amount:,.0f}\n"
-                    f"Category: {category.title()}\n\n"
+                    f"✅ Expense recorded successfully.\n\n"
+                    f"Category: {category.title()}\n"
+                    f"Amount: Rs.{amount:,.0f}\n\n"
                     f"{self.recommendation(user_id)}"
                 ),
                 "intent": "add_expense"
@@ -587,8 +602,12 @@ class FinBuddyAI:
 
             if amount:
                 set_budget(user_id, amount)
+
                 return {
-                    "reply": f"✅ Monthly budget set to Rs.{amount:,.0f}. I will compare your spending with this budget.",
+                    "reply": (
+                        f"📌 Your monthly budget has been set to Rs.{amount:,.0f}.\n\n"
+                        "I’ll compare your expenses with this budget and help you stay on track."
+                    ),
                     "intent": "budget_set"
                 }
 
@@ -596,12 +615,15 @@ class FinBuddyAI:
 
             if budget:
                 return {
-                    "reply": f"Your current monthly budget is Rs.{budget:,.0f}.\n\n{self.monthly_summary_text(user_id)}",
+                    "reply": (
+                        f"Your current monthly budget is Rs.{budget:,.0f}.\n\n"
+                        f"{self.monthly_summary_text(user_id)}"
+                    ),
                     "intent": "budget_help"
                 }
 
             return {
-                "reply": "Tell me your budget like this: set budget 50000.",
+                "reply": "To set your monthly budget, type something like: set budget 50000.",
                 "intent": "budget_help"
             }
 
@@ -639,13 +661,19 @@ class FinBuddyAI:
 
             if amount:
                 add_expense(user_id, amount, category, message)
+
                 return {
-                    "reply": f"Done! I recorded Rs.{amount:,.0f} under {category.title()}. {self.recommendation(user_id)}",
+                    "reply": (
+                        f"✅ Expense recorded successfully.\n\n"
+                        f"Category: {category.title()}\n"
+                        f"Amount: Rs.{amount:,.0f}\n\n"
+                        f"{self.recommendation(user_id)}"
+                    ),
                     "intent": intent
                 }
 
             return {
-                "reply": "Please include the amount, for example: I spent 500 on food.",
+                "reply": "Please include the amount and category so I can record the expense correctly.",
                 "intent": intent
             }
 
@@ -654,8 +682,9 @@ class FinBuddyAI:
 
             if amount:
                 set_budget(user_id, amount)
+
                 return {
-                    "reply": f"Monthly budget set to Rs.{amount:,.0f}. I will compare your spending with this budget.",
+                    "reply": f"📌 Your monthly budget has been set to Rs.{amount:,.0f}.",
                     "intent": intent
                 }
 
@@ -681,9 +710,8 @@ class FinBuddyAI:
         if intent == "unknown_questions":
             return {
                 "reply": (
-                    "I am not fully sure about that yet. "
-                    "Please tell me your salary, expenses, savings, budget, or goal so I can help better. "
-                    "Admin can also teach me using: teach: your question => the correct answer"
+                    "I’m still learning about that topic 😊\n\n"
+                    "You can ask me about budgeting, expenses, savings, investments, loans, buying decisions, or financial planning."
                 ),
                 "intent": intent
             }

@@ -1,3 +1,5 @@
+"""Flask backend for FinBuddy AI personal finance chatbot."""
+
 import csv
 import io
 from datetime import datetime
@@ -28,13 +30,16 @@ from database import (
     get_budget
 )
 
+
 app = Flask(__name__)
 app.secret_key = "change-this-secret-key-for-production"
 
 init_db()
 
-# Auto-load admin training data into online database
-import admin_training
+try:
+    import admin_training
+except Exception as error:
+    print("Admin training skipped:", error)
 
 bot = FinBuddyAI()
 
@@ -111,13 +116,12 @@ def logout():
 @login_required
 def chat():
     data = request.get_json() or {}
-
-    # NLP preprocessing
-    message = data.get("message", "").lower().strip()
+    message = data.get("message", "").strip()
 
     if not message:
         return jsonify({
-            "reply": "Please type a message."
+            "reply": "Please enter your financial question or expense details 😊",
+            "intent": "empty"
         })
 
     response = bot.reply(
@@ -217,6 +221,7 @@ def export_pdf():
         if y < 60:
             pdf.showPage()
             y = 750
+            pdf.setFont("Helvetica", 9)
 
         pdf.drawString(50, y, str(row["expense_date"]))
         pdf.drawString(150, y, str(row["category"])[:18])
