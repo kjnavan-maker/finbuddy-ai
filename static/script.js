@@ -306,9 +306,7 @@ function renderReminders(reminders) {
     const reminderListPopup = document.getElementById("reminderListPopup");
     const reminderCount = document.getElementById("reminderCount");
 
-    const reminderData = reminders && reminders.length
-        ? reminders
-        : getDefaultReminders();
+    const reminderData = reminders || [];
 
     const html = reminderData.map(item => `
         <div class="reminder-item">
@@ -318,7 +316,10 @@ function renderReminders(reminders) {
     `).join("");
 
     if (reminderListPopup) {
-        reminderListPopup.innerHTML = html || `<p>No reminders found.</p>`;
+        reminderListPopup.innerHTML =
+        reminderData.length > 0
+          ? html
+            : `<p>No reminders found.</p>`;
     }
 
     if (reminderCount) {
@@ -364,4 +365,3 @@ document.addEventListener("DOMContentLoaded", function () {
     loadSummary();
     loadRemindersFromAPI();
 });
- 
