@@ -132,7 +132,6 @@ class FinBuddyAI:
             vectorizer = TfidfVectorizer()
             matrix = vectorizer.fit_transform(questions + [user_question])
             scores = cosine_similarity(matrix[-1], matrix[:-1])[0]
-
             best_index = scores.argmax()
 
             if scores[best_index] >= 0.50:
@@ -230,10 +229,11 @@ class FinBuddyAI:
         total = sum(row["total"] for row in rows)
         top = rows[0]
 
-        lines = []
-        lines.append("📊 Monthly Financial Overview")
-        lines.append("")
-        lines.append(f"💸 Total Expenses: Rs.{total:,.0f}")
+        lines = [
+            "📊 Monthly Financial Overview",
+            "",
+            f"💸 Total Expenses: Rs.{total:,.0f}"
+        ]
 
         if salary:
             lines.append(f"💰 Monthly Income: Rs.{salary:,.0f}")
@@ -326,6 +326,7 @@ class FinBuddyAI:
     # ===============================
     # FINANCE CALCULATION FEATURES
     # ===============================
+
     def safe_calculate(self, expression):
         operators = {
             ast.Add: operator.add,
@@ -554,6 +555,10 @@ class FinBuddyAI:
             f"Remaining Days: {days}\n\n"
             f"You can spend about Rs.{daily_limit:,.0f} per day."
         )
+
+    # ===============================
+    # USER PROFILE / FINANCE HANDLERS
+    # ===============================
 
     def salary_handler(self, user_id, message):
         if any(word in message for word in ["salary", "income", "monthly income", "my pay"]):
@@ -807,6 +812,10 @@ class FinBuddyAI:
             return f"🔔 Reminder saved: {bill_name} on day {due_day} of every month."
 
         return None
+
+    # ===============================
+    # MAIN REPLY ENGINE
+    # ===============================
 
     def reply(self, user_id, message):
         message = message.lower().strip()
