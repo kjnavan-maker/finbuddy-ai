@@ -1,0 +1,804 @@
+teach: hi => Hello 👋 | Hi there 😊 | Hey! Ready to manage your finances?
+
+teach: hello => Hello 😊 How can I help you today?
+
+teach: hey => Hey 👋 Need help with budgeting or expenses?
+
+teach: good morning => Good morning ☀️ Ready to manage your finances today?
+
+teach: good evening => Good evening 😊 Let's review your spending today.
+
+teach: how are you => I am doing great 😊 Ready to help with your finances.
+
+teach: what is your name => My name is FinBuddy AI 🤖💰
+
+teach: who are you => I am FinBuddy AI, your personal finance assistant.
+
+teach: what can you do => I can track expenses, manage budgets, and give financial advice.
+
+teach: thank you => You are welcome 😊
+
+teach: thanks => Happy to help 💰
+
+teach: bye => Goodbye 👋 Spend wisely!
+
+teach: good night => Good night 🌙 Save smartly.
+
+teach: nice to meet you => Nice to meet you too 😊
+
+teach: can you help me => Of course 😊 Tell me your financial problem or goal.
+
+teach: are you ai => Yes 🤖 I am an AI-powered personal finance chatbot.
+
+teach: do you learn => Yes 🧠 I learn from admin training.
+
+teach: can you remember => Yes 😊 I remember learned knowledge and financial details.
+
+teach: what is your purpose => My purpose is to help users manage money wisely.
+
+teach: do you know me => I know the financial details you share with me.
+
+teach: what is budget => A budget is a financial plan for managing income and expenses.
+
+teach: why is budgeting important => Budgeting helps control spending and improve financial stability.
+
+teach: how to create budget => List income, expenses, savings goals, and spending limits.
+
+teach: how to control budget => Track expenses and reduce unnecessary spending.
+
+teach: what is monthly budget => A monthly budget is your planned monthly spending.
+
+teach: what is yearly budget => A yearly budget is a financial plan for one year.
+
+teach: how much should i budget => Budget according to your income and essential expenses.
+
+teach: budget advice => Follow your spending limits and review expenses regularly.
+
+teach: how to stick to budget => Track daily expenses and avoid impulse buying.
+
+teach: what is budget planning => Budget planning means organizing income and expenses.
+
+teach: budget tips => Prioritize needs before wants.
+
+teach: how to reduce budget problems => Track overspending categories and reduce waste.
+
+teach: how to improve budget => Review your spending habits monthly.
+
+teach: how to balance budget => Spend less than your income and save consistently.
+
+teach: why do budgets fail => Budgets fail when spending is not tracked.
+
+teach: best budgeting method => The 50/30/20 rule is a popular budgeting method.
+
+teach: what is 50 30 20 rule => 50% needs, 30% wants, 20% savings.
+
+teach: what is zero based budget => Every rupee is assigned a purpose.
+
+teach: what is flexible budget => A flexible budget adjusts according to income changes.
+
+teach: how to budget salary => Divide salary into needs, savings, and future goals.
+
+teach: what is saving => Saving means keeping money aside for future needs.
+
+teach: why should i save money => Savings protect you during emergencies.
+
+teach: how to save money => Reduce unnecessary spending and save regularly.
+
+teach: how much should i save => Try saving at least 10% to 20% of income.
+
+teach: saving tips => Save first, spend later.
+
+teach: best saving habit => Track expenses and avoid wasteful spending.
+
+teach: what is emergency fund => An emergency fund is money saved for unexpected situations.
+
+teach: how much emergency fund should i have => Save 3 to 6 months of essential expenses.
+
+teach: how to build savings => Save a small amount consistently every month.
+
+teach: i cannot save money => Start small and reduce unnecessary expenses.
+
+teach: saving challenge => Try saving a fixed amount every week.
+
+teach: saving strategy => Automate savings and avoid impulse purchases.
+
+teach: how to increase savings => Reduce expenses and increase income.
+
+teach: how to save salary => Save before spending.
+
+teach: how to save for future => Create long-term savings goals.
+
+teach: how to save for marriage => Set a separate savings goal and track progress.
+
+teach: how to save for education => Start saving early and avoid unnecessary debt.
+
+teach: how to save for travel => Create a travel budget and save monthly.
+
+teach: how to save fast => Reduce luxury spending temporarily.
+
+teach: how to save with low salary => Focus on essential expenses first.
+
+teach: what is expense => An expense is money spent on needs or wants.
+
+teach: how to reduce expenses => Reduce non-essential spending.
+
+teach: what is overspending => Overspending means spending beyond your financial limit.
+
+teach: what is smart spending => Smart spending means buying only necessary items.
+
+teach: food expense advice => Cook at home more often to reduce food costs.
+
+teach: transport expense advice => Use public transport and plan routes.
+
+teach: shopping expense advice => Avoid impulse buying.
+
+teach: bill expense advice => Reduce electricity and subscription costs.
+
+teach: rent expense advice => Manage flexible expenses carefully.
+
+teach: i spend too much => Track expenses daily and reduce unnecessary purchases.
+
+teach: how to track expenses => Record every expense regularly.
+
+teach: why are my expenses high => High expenses may come from overspending or poor budgeting.
+
+teach: how to lower monthly expenses => Reduce unnecessary spending categories.
+
+teach: expense management tips => Track and categorize expenses.
+
+teach: what are fixed expenses => Fixed expenses stay similar every month.
+
+teach: what are variable expenses => Variable expenses change monthly.
+
+teach: daily expense advice => Track daily spending carefully.
+
+teach: weekend spending advice => Set limits for entertainment spending.
+
+teach: how to avoid wasteful spending => Think before buying unnecessary items.
+
+teach: how to spend wisely => Prioritize needs before wants.
+
+teach: what is salary => Salary is fixed income from employment.
+
+teach: what is income => Income is money earned from work or investments.
+
+teach: how to manage salary => Divide salary into needs, wants, savings, and investments.
+
+teach: salary management tips => Save before spending.
+
+teach: how to increase income => Improve skills or start side income.
+
+teach: low salary advice => Prioritize essential expenses and avoid debt.
+
+teach: high salary advice => Increase savings and investments.
+
+teach: how to use salary wisely => Plan spending and avoid unnecessary luxury.
+
+teach: how to manage monthly income => Track expenses and savings goals.
+
+teach: how to improve financial condition => Control expenses and increase savings.
+
+teach: best use of salary => Spend wisely and save consistently.
+
+teach: salary planning advice => Create a monthly budget.
+
+teach: how to survive with low income => Focus on essentials and avoid debt.
+
+teach: income management => Track income sources and spending.
+
+teach: what is passive income => Passive income is earned with minimal daily effort.
+
+teach: what is debt => Debt is borrowed money that must be repaid.
+
+teach: what is loan => A loan is borrowed money with repayment terms.
+
+teach: what is emi => EMI means Equated Monthly Installment.
+
+teach: how to reduce debt => Pay high-interest debt first.
+
+teach: should i take loan => Take loans only when necessary.
+
+teach: loan advice => Borrow only what you can repay.
+
+teach: credit card advice => Pay bills on time and avoid overspending.
+
+teach: what is good debt => Good debt helps build future value.
+
+teach: what is bad debt => Bad debt is borrowing for unnecessary luxury.
+
+teach: how to avoid debt => Spend within your income.
+
+teach: how to pay loan faster => Pay extra whenever possible.
+
+teach: loan repayment tips => Prioritize high-interest loans.
+
+teach: debt stress advice => Create a repayment plan and reduce unnecessary spending.
+
+teach: student loan advice => Borrow only for important educational needs.
+
+teach: car loan advice => Keep EMI below 20% of salary.
+
+teach: home loan advice => Plan carefully before taking long-term loans.
+
+teach: credit card debt help => Pay more than the minimum amount.
+
+teach: loan vs savings => Use savings wisely before taking unnecessary loans.
+
+teach: interest rate meaning => Interest rate is the cost of borrowing money.
+
+teach: how to improve credit score => Pay bills and loans on time.
+
+teach: what is investment => Investment means using money to earn future profit.
+
+teach: what is inflation => Inflation is the increase in prices over time.
+
+teach: what is interest => Interest is the cost of borrowing or reward for saving.
+
+teach: what is compound interest => Compound interest earns interest on previous interest.
+
+teach: how to invest money => Start investing after building emergency savings.
+
+teach: beginner investment advice => Start with low-risk investments.
+
+teach: what is risk => Risk is the possibility of losing money.
+
+teach: what is diversification => Diversification spreads investments to reduce risk.
+
+teach: investment tips => Research before investing.
+
+teach: safe investment advice => Low-risk investments provide more stability.
+
+teach: long term investment advice => Invest consistently and patiently.
+
+teach: short term investment advice => Short-term investments may have lower returns.
+
+teach: what is stock market => The stock market is where shares are traded.
+
+teach: what is mutual fund => Mutual funds pool money from many investors.
+
+teach: what is cryptocurrency => Cryptocurrency is digital currency.
+
+teach: crypto investment advice => Invest carefully because crypto is risky.
+
+teach: gold investment advice => Gold can be useful for long-term savings.
+
+teach: land investment advice => Research location and legal documents carefully.
+
+teach: business investment advice => Understand risks before investing.
+
+teach: retirement investment advice => Start investing early for retirement.
+
+teach: i need iphone => Check salary, savings, and expenses before buying an iPhone.
+
+teach: should i buy iphone => Buy an iPhone only if savings are stable.
+
+teach: can i afford iphone => Affordability depends on salary and savings.
+
+teach: i need bike => Save monthly before buying a bike.
+
+teach: should i buy bike => Check EMI and maintenance costs.
+
+teach: can i afford bike => A bike is affordable if expenses are balanced.
+
+teach: i need bicycle => A bicycle is a low-cost smart purchase.
+
+teach: should i buy bicycle => A bicycle can reduce transport costs.
+
+teach: i need car => Plan fuel, insurance, and EMI carefully.
+
+teach: should i buy car => Keep car EMI below 20% of salary.
+
+teach: can i afford car => Check if monthly costs fit your budget.
+
+teach: i need laptop => Buy a laptop only if necessary for work or study.
+
+teach: should i buy laptop => Choose a laptop based on actual needs.
+
+teach: can i afford laptop => A laptop is affordable if savings remain stable.
+
+teach: i need house => Start a separate house savings fund.
+
+teach: should i buy house => Plan carefully before taking home loans.
+
+teach: can i afford house => Check down payment and EMI affordability.
+
+teach: i need land => Research location and save for down payment.
+
+teach: should i buy land => Land can be a good long-term investment.
+
+teach: i need gold => Buy gold gradually using savings.
+
+teach: i am stressed about money => Don’t worry 😊 Start with a simple budget.
+
+teach: i am worried about debt => Pay high-interest debt first.
+
+teach: motivate me to save money => Small savings today create financial freedom tomorrow.
+
+teach: i failed financially => Financial mistakes are learning opportunities.
+
+teach: i feel poor => Your situation can improve with discipline and planning.
+
+teach: i have money problems => Track expenses and reduce unnecessary costs.
+
+teach: i feel hopeless => Start small and improve step by step.
+
+teach: i need financial advice => Tell me your financial issue or goal.
+
+teach: how to avoid financial stress => Follow a budget and build emergency savings.
+
+teach: i am afraid of loans => Borrow carefully and plan repayments wisely.
+
+teach: i am sad => I’m sorry to hear that 😔 Money problems can feel stressful, but we can improve step by step. Tell me your main issue: expenses, debt, savings, or budget.
+
+teach: i am so sad => I’m sorry you feel that way 😔 Let’s take one small step. Tell me your salary or biggest expense, and I’ll help you plan.
+
+teach: i feel stressed => Don’t worry 😊 Start small: track expenses, reduce unnecessary spending, and build savings step by step.
+
+teach: i am worried => It’s okay 😊 Financial problems can be solved slowly with a clear budget and savings plan.
+
+teach: i need it => Sure 😊 Tell me what you need, your budget, and your savings, then I can give better advice.
+
+teach: ok i need it => Sure 😊 Tell me what item you need and your expected price, then I can help you plan it.
+
+teach: what is nlp => NLP means Natural Language Processing.
+
+teach: what is inference engine => An inference engine maps user input to suitable actions.
+
+teach: what is knowledge base => A knowledge base stores learned information.
+
+teach: what ai features do you have => I use NLP, self-learning, and financial analysis.
+
+teach: how do you give personalized advice => I use salary, savings, expenses, and goals.
+
+teach: why are you intelligent => I use machine learning and inference logic.
+
+teach: what is self learning ai => Self-learning AI improves using learned knowledge.
+
+teach: what is chatbot => A chatbot is software that communicates with users.
+
+teach: what is machine learning => Machine learning helps systems learn from data.
+
+teach: what is artificial intelligence => AI enables computers to perform intelligent tasks.
+
+teach: how to manage family expenses => Track household spending and prioritize essential needs.
+
+teach: family budget tips => Create a monthly family budget and review expenses together.
+
+teach: how to save money for family => Reduce unnecessary spending and build emergency savings.
+
+teach: children education savings => Start education savings early and save consistently.
+
+teach: family financial planning => Plan income, expenses, savings, insurance, and future goals.
+
+teach: how to reduce family expenses => Track wasteful spending and avoid unnecessary luxury purchases.
+
+teach: how to support parents financially => Plan a separate support budget without harming savings.
+
+teach: how to save for children => Create a separate savings account for children’s future.
+
+teach: family emergency fund => Keep emergency savings for medical or unexpected situations.
+
+teach: best family budgeting advice => Spend wisely and save before unnecessary shopping.
+
+teach: student budget advice => Track expenses carefully and avoid unnecessary spending.
+
+teach: how to save money as student => Reduce entertainment expenses and save small amounts regularly.
+
+teach: student expense management => Separate study needs from luxury spending.
+
+teach: how to manage pocket money => Plan spending weekly and avoid impulse purchases.
+
+teach: best financial advice for students => Learn budgeting and saving habits early.
+
+teach: how to avoid student debt => Borrow only for important educational needs.
+
+teach: student saving tips => Save part of pocket money every month.
+
+teach: cheap student lifestyle advice => Focus on needs instead of expensive wants.
+
+teach: how to buy laptop for studies => Choose affordable laptops based on actual academic needs.
+
+teach: education financial planning => Plan tuition, books, and living expenses carefully.
+
+teach: what is business finance => Business finance manages money for business operations and growth.
+
+teach: small business budgeting => Track revenue and expenses carefully.
+
+teach: how to grow business financially => Control costs and reinvest profits wisely.
+
+teach: business saving advice => Separate personal and business finances.
+
+teach: business expense management => Monitor operational costs regularly.
+
+teach: startup financial advice => Start with realistic budgeting and avoid unnecessary spending.
+
+teach: how to invest in business => Research risks and market demand carefully.
+
+teach: business loan advice => Borrow only if repayment is manageable.
+
+teach: business profit advice => Increase efficiency and reduce wasteful costs.
+
+teach: business financial planning => Set clear goals and track cash flow.
+
+teach: what is retirement planning => Retirement planning prepares financially for life after work.
+
+teach: how to save for retirement => Start saving early and invest consistently.
+
+teach: best retirement advice => Save regularly and avoid unnecessary debt.
+
+teach: retirement investment tips => Long-term investments help retirement growth.
+
+teach: how much should i save for retirement => Save consistently according to future lifestyle needs.
+
+teach: retirement budgeting => Plan future living expenses carefully.
+
+teach: why retirement savings important => Retirement savings provide future financial security.
+
+teach: retirement financial freedom => Early planning improves retirement stability.
+
+teach: retirement goal planning => Set long-term financial targets.
+
+teach: safe retirement investments => Choose low-risk long-term investment options.
+
+teach: what is bank account => A bank account stores and manages money securely.
+
+teach: what is savings account => A savings account helps store money safely.
+
+teach: what is current account => A current account is mainly used for business transactions.
+
+teach: how to use bank wisely => Track transactions and avoid unnecessary fees.
+
+teach: online banking safety => Protect passwords and avoid suspicious links.
+
+teach: what is atm => ATM allows cash withdrawal and banking services.
+
+teach: mobile banking advice => Use secure passwords and official banking apps.
+
+teach: bank loan meaning => A bank loan is borrowed money from a financial institution.
+
+teach: bank interest meaning => Bank interest is money earned or paid on deposits or loans.
+
+teach: best banking advice => Choose reliable banks and manage transactions carefully.
+
+teach: what is insurance => Insurance protects against financial loss.
+
+teach: why insurance important => Insurance helps during emergencies and accidents.
+
+teach: health insurance advice => Health insurance reduces medical financial risk.
+
+teach: life insurance advice => Life insurance protects family financial stability.
+
+teach: vehicle insurance advice => Vehicle insurance helps cover accident costs.
+
+teach: travel insurance advice => Travel insurance protects during unexpected travel problems.
+
+teach: insurance saving advice => Choose affordable plans with useful coverage.
+
+teach: insurance financial planning => Insurance should be part of long-term planning.
+
+teach: best insurance advice => Compare policies carefully before buying.
+
+teach: what is premium => Premium is the amount paid for insurance coverage.
+
+teach: how to save electricity bill => Turn off unused devices and use energy-efficient appliances.
+
+teach: how to save water bill => Reduce unnecessary water usage.
+
+teach: how to reduce internet bill => Choose affordable plans and remove unused subscriptions.
+
+teach: daily money saving tips => Track small expenses because they grow over time.
+
+teach: shopping budget advice => Set spending limits before shopping.
+
+teach: festival spending advice => Plan festival budgets carefully and avoid overspending.
+
+teach: holiday spending advice => Save for holidays in advance.
+
+teach: food budgeting tips => Plan meals and avoid food waste.
+
+teach: transport saving tips => Use public transport and reduce unnecessary trips.
+
+teach: weekend spending tips => Set entertainment limits and avoid impulse purchases.
+
+teach: should i buy gaming laptop => Buy a gaming laptop only if it matches your real needs and budget.
+
+teach: should i buy expensive phone => Expensive phones should not affect emergency savings.
+
+teach: how to buy affordable laptop => Compare prices and focus on essential features.
+
+teach: phone upgrade advice => Upgrade phones only when truly necessary.
+
+teach: best financial decision before buying gadgets => Check savings and avoid unnecessary debt.
+
+teach: how to avoid gadget overspending => Avoid buying devices only for trends.
+
+teach: technology spending advice => Prioritize useful technology purchases.
+
+teach: how to save for gadgets => Create a separate gadget savings goal.
+
+teach: buy now or save first => Saving first is usually financially safer.
+
+teach: luxury purchase advice => Avoid luxury purchases when savings are low.
+
+teach: what is net worth => Net worth equals assets minus liabilities.
+
+teach: what is asset => An asset is something valuable you own.
+
+teach: what is liability => A liability is money you owe.
+
+teach: what is cash flow => Cash flow is money moving in and out.
+
+teach: positive cash flow meaning => Positive cash flow means income exceeds expenses.
+
+teach: negative cash flow meaning => Negative cash flow means expenses exceed income.
+
+teach: what is financial risk => Financial risk is the chance of losing money.
+
+teach: what is diversification => Diversification spreads investments to reduce risk.
+
+teach: how to build wealth => Wealth grows through saving, investing, and discipline.
+
+teach: how to become millionaire => Consistent investing and financial discipline build wealth over time.
+
+teach: motivate me financially => Every small financial improvement matters 💰
+
+teach: i feel broke => Start with budgeting and small savings goals.
+
+teach: i want better future => Consistent saving and smart planning improve the future.
+
+teach: i need motivation => Financial discipline today creates freedom tomorrow.
+
+teach: i lost money => Learn from mistakes and improve your financial planning.
+
+teach: i feel stressed => Take one step at a time and focus on essentials.
+
+teach: i cannot control spending => Track every expense and avoid impulse buying.
+
+teach: how to stay financially disciplined => Follow a budget and avoid emotional spending.
+
+teach: i feel insecure financially => Emergency savings and budgeting improve security.
+
+teach: how to stay positive financially => Focus on gradual improvement and long-term goals.
+
+teach: how do chatbots work => Chatbots use NLP and decision logic to understand users.
+
+teach: what is tfidf => TF-IDF helps identify important words in text.
+
+teach: what is logistic regression => Logistic regression predicts categories from input data.
+
+teach: what is machine learning model => A machine learning model learns patterns from data.
+
+teach: how does your brain work => I use NLP, inference logic, and a knowledge base.
+
+teach: what is intent classification => Intent classification identifies the purpose of user input.
+
+teach: what is self learning => Self-learning means improving using learned knowledge.
+
+teach: what is recommendation system => A recommendation system gives personalized suggestions.
+
+teach: what is database => A database stores information permanently.
+
+teach: what is sqlite => SQLite is a lightweight database used in applications.
+
+teach: yes i need help => Sure 😊 Tell me what you want help with: expense, budget, saving, debt, or buying goal.
+
+teach: i need your help => Of course 😊 I can help with budgeting, savings, expenses, debt, or purchase planning.
+
+teach: help me => Sure 😊 Start by telling me your salary, expenses, savings, or financial goal.
+
+teach: guide me => I can guide you step by step. First tell me what you want to do: save money, reduce expenses, or buy something.
+
+teach: start => Great 😊 You can start by typing: my salary is 120000, I spent 500 on food, or set budget 50000.
+
+teach: what should i do first => Start by entering your salary, then your monthly expenses and savings. After that I can give better advice.
+
+teach: how to start => Start with your income and expenses. Example: my salary is 120000 and food expense 30000.
+
+teach: what next => Next, you can add expenses, set a budget, check monthly summary, or ask for saving advice.
+
+teach: next => You can continue by adding expenses, checking budget, or asking finance questions.
+
+teach: then => Next, you can type monthly summary to analyze your spending.
+
+teach: okay what next => Now tell me your salary, savings, or expenses so I can give personalized advice.
+
+teach: ok what next => You can add an expense, set your budget, or tell me your financial goal.
+
+teach: fine what next => Great 😊 Next, tell me your monthly salary or expenses.
+
+teach: continue => Sure 😊 Continue by telling me your expenses, savings, or financial goal.
+
+teach: go on => Sure. Tell me more about your financial situation.
+
+teach: tell me more => I can explain budgeting, saving, debt, investment, or buying decisions. What would you like?
+
+teach: i do not understand => No worries 😊 I can explain simply. Tell me which part is confusing: budget, saving, expense, or loan.
+
+teach: i dont understand => That’s okay 😊 I can guide you step by step.
+
+teach: i am confused => No problem 😊 Start by telling me your salary and main expenses.
+
+teach: explain simply => Sure 😊 I will explain in simple words.
+
+teach: can you explain => Yes 😊 Tell me what topic you want me to explain.
+
+teach: explain again => Sure 😊 I can explain again in a simpler way.
+
+teach: say in simple way => Of course 😊 I will explain in a simple and clear way.
+
+teach: what do you mean => I mean you should check income, expenses, savings, and goals before making financial decisions.
+
+teach: i dont know => That’s okay 😊 I can help you step by step.
+
+teach: i don't know => That’s okay 😊 Let’s start with your salary and expenses.
+
+teach: what are my options => Your options are: reduce expenses, increase savings, set a budget, avoid debt, or plan your goal slowly.
+
+teach: give me options => You can choose: expense tracking, budget planning, saving advice, debt help, or buying advice.
+
+teach: what can i ask => You can ask about expenses, budget, savings, debt, loans, investments, or buying goals.
+
+teach: what questions can i ask => You can ask: how to save money, can I afford a bike, monthly summary, or how to reduce debt.
+
+teach: show examples => Examples: I spent 500 on food, set budget 50000, monthly summary, can I afford iPhone.
+
+teach: give examples => Try asking: how to save money, what is budget, I need bike, or how to reduce expenses.
+
+teach: example please => Example: my salary is 120000, my savings 10000, food expense 30000, i need iphone.
+
+teach: what should i type => You can type: my salary is 120000, I spent 500 on food, set budget 50000, or monthly summary.
+
+teach: i entered my salary => Great 😊 Now enter your monthly expenses like food expense 30000 or transport expense 20000.
+
+teach: salary added => Good 😊 Now tell me your monthly expenses and savings.
+
+teach: my salary is saved => Great. Now add expenses so I can analyze your spending.
+
+teach: what after salary => After salary, enter expenses and savings. Example: food expense 30000, my savings 10000.
+
+teach: i told my salary => Thank you 😊 Now tell me your expenses and savings for better advice.
+
+teach: i entered expense => Great 😊 You can add more expenses or type monthly summary.
+
+teach: expense added => Good 😊 Add more expenses or ask me to analyze spending.
+
+teach: what after expense => After adding expenses, type monthly summary or analyze my spending.
+
+teach: i added food expense => Good. You can add transport, rent, bills, or savings next.
+
+teach: i added transport expense => Good. Add other expenses like food, rent, bills, or savings.
+
+teach: i added rent => Good. Rent is a fixed expense. Now add food, transport, bills, or savings.
+
+teach: i added bills => Good. Now you can ask for monthly summary or saving advice.
+
+teach: i entered savings => Great 😊 Now I can give better personalized advice for your goals.
+
+teach: savings added => Good 😊 Tell me your financial goal, such as iPhone, bike, car, laptop, or house.
+
+teach: what after savings => Now tell me what you want to buy or improve financially.
+
+teach: i told my savings => Great. Now ask me: can I afford iPhone, bike, car, laptop, or house.
+
+teach: i set budget => Great 😊 I will compare your spending with your budget.
+
+teach: budget added => Good 😊 Add expenses and ask for monthly summary.
+
+teach: what after budget => After setting budget, add your expenses and ask me to analyze spending.
+
+teach: budget is saved => Great. Now track expenses so I can warn you about overspending.
+
+teach: show my summary => Type monthly summary to view your spending report.
+
+teach: i want summary => Sure 😊 Type monthly summary and I will calculate your expenses.
+
+teach: how to see summary => Type monthly summary to see total spending and highest category.
+
+teach: show report => Type monthly summary or open the dashboard to view your report.
+
+teach: show dashboard => You can use the dashboard to see charts, expenses, budget, and recent records.
+
+teach: show my expenses => You can type monthly summary to view your expense breakdown.
+
+teach: analyze my money => Sure 😊 I can analyze your spending after you add expenses.
+
+teach: i want to buy something => Tell me what you want to buy: iPhone, bike, bicycle, car, laptop, house, land, or gold.
+
+teach: i want to buy a product => Tell me the product name and your salary/savings so I can advise.
+
+teach: i need something expensive => Before buying expensive items, check salary, expenses, savings, and emergency fund.
+
+teach: can i buy this => Tell me the item name and your salary/savings so I can check affordability.
+
+teach: is it worth buying => It is worth buying only if it supports your needs and does not harm your savings.
+
+teach: should i wait or buy => If savings are low, wait and save first. If budget is stable, you may plan to buy.
+
+teach: buy now or later => If it is not urgent, save first and buy later without debt.
+
+teach: help me buy something => Sure 😊 Tell me what you want to buy and your monthly savings.
+
+teach: plan my purchase => I can help. Tell me the item, estimated price, salary, expenses, and savings.
+
+teach: purchase advice => Buy only if essential expenses, emergency fund, and monthly savings are safe.
+
+teach: i have debt => Don’t worry. List your debts, pay high-interest debt first, and avoid new loans.
+
+teach: i have loan => Check your EMI, interest rate, and monthly budget before taking more debt.
+
+teach: i cannot pay loan => Contact your lender, reduce non-essential spending, and create a repayment plan.
+
+teach: my emi is high => If EMI is high, reduce other expenses and avoid taking new loans.
+
+teach: debt is stressful => Debt can be stressful. Start with a clear repayment plan and small consistent payments.
+
+teach: how to start paying debt => Start by listing all debts and paying the highest interest one first.
+
+teach: which debt first => Usually pay high-interest debt first because it grows faster.
+
+teach: should i borrow money => Borrow only if necessary and if repayment is affordable.
+
+teach: loan or save => If it is not urgent, saving first is safer than taking a loan.
+
+teach: credit card problem => Stop new card spending and pay more than the minimum amount monthly.
+
+teach: i want to save => Great 😊 Set a monthly savings goal and reduce unnecessary expenses.
+
+teach: help me save => Sure 😊 Tell me your salary and expenses so I can suggest a savings plan.
+
+teach: how do i start saving => Start by saving a small fixed amount every month before spending.
+
+teach: i cannot save enough => Reduce flexible expenses like shopping, entertainment, and restaurant food.
+
+teach: i want more savings => Increase savings by reducing wants and tracking every expense.
+
+teach: how to save faster => Cut non-essential spending temporarily and set a clear savings target.
+
+teach: saving plan please => Tell me your salary, expenses, and goal so I can suggest a saving plan.
+
+teach: make saving plan => Start with 10% of income, then gradually increase to 20% if possible.
+
+teach: is my saving enough => Your saving is enough only if it protects emergencies and supports your goals.
+
+teach: how to protect savings => Keep savings separate from daily spending money.
+
+teach: nice => Glad you like it 😊 What would you like to do next?
+
+teach: good => Great 😊 Let’s continue improving your finances.
+
+teach: great => Awesome 😊 Tell me your next financial question.
+
+teach: super => Thank you 😊 I’m ready to help more.
+
+teach: perfect => Great 😊 Continue by asking about expenses, savings, budget, or goals.
+
+teach: wow => Happy to help 😊 Finance becomes easier with planning.
+
+teach: not good => No problem. Tell me what went wrong and I will try to help.
+
+teach: wrong answer => Sorry about that. Admin can teach me the correct answer using teach: question => answer.
+
+teach: that is wrong => Thanks for telling me. Admin can update my knowledge using the teach command.
+
+teach: i need better answer => Sure. Please give more details like salary, expenses, savings, and goal.
+
+teach: see you => See you again 😊 Keep saving smartly.
+
+teach: talk later => Sure 😊 I’ll be here when you need finance help.
+
+teach: goodbye => Goodbye 👋 Take care of your finances.
+
+teach: finish => Okay 😊 Remember to track expenses and save regularly.
+
+teach: done => Great 😊 Let me know if you need more financial advice.
+
+teach: that is all => Okay 😊 Happy to help with your financial journey.
+
+teach: no thanks => No problem 😊 Come back anytime for finance advice.
+
+teach: i need make a budget => Sure 😊 A good budget starts with income, expenses, and savings. Tell me your monthly expenses like food, rent, transport, and bills.
+
+teach: help me make budget => I can help you create a budget. First tell me your salary, fixed expenses, and savings goal.
+
+teach: make a budget for me => Sure 😊 Add your salary and main expenses first, then I will suggest a monthly budget plan.
+

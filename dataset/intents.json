@@ -40,10 +40,161 @@
       "patterns": ["thank you", "thanks", "you are helpful", "great", "nice", "bye", "goodbye"],
       "responses": ["You are welcome! Keep building healthy money habits.", "Happy to help. Small smart decisions create big financial progress.", "Goodbye! Come back anytime for finance help."]
     },
-    {
-      "tag": "unknown_questions",
-      "patterns": ["random unknown text", "something not in dataset", "teach mode", "unknown question"],
-      "responses": ["I am not fully sure yet. Could you teach me the best answer?", "I do not know that yet, but I can learn from you."]
-    }
+   {
+  "tag": "unknown_questions",
+  "patterns": ["random unknown text", "something not in dataset", "teach mode", "unknown question"],
+  "responses": ["I am not fully sure yet. Could you teach me the best answer?", "I do not know that yet, but I can learn from you."]
+},
+{
+  "tag": "saving_goal",
+  "patterns": [
+    "I need to save 50000 within 3 months",
+    "I want to save 50000 in 3 months",
+    "How can I save 50000 in 3 months",
+    "Help me save 50000 within 3 months",
+    "Create a saving plan for 50000",
+    "I want to save money for future",
+    "How much should I save monthly",
+    "Monthly saving plan",
+    "Saving target",
+    "Help me reach my saving goal",
+    "I need a savings plan",
+    "How to save money quickly",
+    "I want to save 100000 in 6 months",
+    "Save 20000 in 2 months",
+    "Plan to save 30000"
+  ],
+  "responses": [
+    "Sure. To reach your saving goal, divide the target amount by the number of months and save that amount monthly.",
+    "Create a monthly saving target, reduce unnecessary expenses, and track your spending regularly."
+  ]
+},
+{
+  "tag": "income_tracking",
+  "patterns": [
+    "my salary is 50000",
+    "add income",
+    "record my income",
+    "I earned 25000 this month",
+    "monthly income",
+    "track my income",
+    "salary credited",
+    "income report",
+    "show my income",
+    "my monthly salary is 60000",
+    "save my salary details",
+    "income summary",
+    "how much income do I have",
+    "add salary 45000",
+    "I received salary today"
+  ],
+  "responses": [
+    "Your income has been recorded successfully.",
+    "I can track your monthly income and compare it with your expenses.",
+    "Income details saved successfully."
+  ]
+},
+{
+  "tag": "expense_tracking",
+  "patterns": [
+    "I spent 500 on food",
+    "spent 1200 for transport",
+    "add 300 groceries",
+    "record my expense",
+    "add expense",
+    "track my spending",
+    "I paid 2000 for shopping",
+    "food expense 500",
+    "transport expense 1200",
+    "groceries cost 300",
+    "I spent money today",
+    "save my expense",
+    "add lunch expense 250",
+    "add dinner expense 600",
+    "I bought clothes for 2500",
+    "record 1000 fuel expense",
+    "medicine expense 800",
+    "rent paid 15000",
+    "electricity bill 3000",
+    "show my expenses"
+  ],
+  "responses": [
+    "Expense recorded successfully.",
+    "I can record your expense. Please include amount and category.",
+    "Your spending has been saved."
+  ]
+},
+{
+  "tag": "budget_help",
+  "patterns": [
+    "set budget",
+    "budget help",
+    "monthly budget",
+    "my budget is 50000",
+    "create budget",
+    "compare budget",
+    "am I over budget",
+    "set my monthly budget to 50000",
+    "how much budget is left",
+    "remaining budget",
+    "budget balance",
+    "did I exceed my budget",
+    "help me plan my budget",
+    "I want to manage my budget",
+    "check my budget status"
+  ],
+  "responses": [
+    "I can help set and compare your monthly budget.",
+    "Tell me your monthly budget, for example: set budget 50000.",
+    "I can calculate your remaining budget based on your expenses."
+  ]
+},
+{
+  "tag": "monthly_summary",
+  "patterns": [
+    "monthly summary",
+    "show my spending",
+    "expense report",
+    "how much did I spend",
+    "total spending",
+    "highest spending category",
+    "this month report",
+    "show my monthly report",
+    "show this month expenses",
+    "monthly expense summary",
+    "category wise spending",
+    "show my finance summary",
+    "how much money is left",
+    "calculate my total expenses",
+    "what is my spending summary"
+  ],
+  "responses": [
+    "Here is your monthly finance summary.",
+    "Let me calculate your spending summary.",
+    "I can show your total expenses and category-wise spending."
+  ]
+},
+{
+  "tag": "loan_advice",
+  "patterns": [
+    "Can I take a loan",
+    "loan eligibility",
+    "how much loan can I afford",
+    "monthly EMI",
+    "loan planning",
+    "I want a home loan",
+    "personal loan advice",
+    "can I manage a loan",
+    "how much EMI can I pay",
+    "loan repayment plan",
+    "salary based loan",
+    "I earn 150000 monthly can I take loan"
+  ],
+  "responses": [
+    "Loan affordability depends on your income, expenses, and existing debts.",
+    "Usually your EMI should stay below 40% of your monthly income."
+  ]
+}
+      
   ]
 }

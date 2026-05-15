@@ -4,6 +4,7 @@ import csv
 import io
 from datetime import datetime
 from functools import wraps
+from database import get_reminders
 
 from flask import (
     Flask,
@@ -57,9 +58,15 @@ def login_required(func):
 @app.route("/")
 @login_required
 def index():
+
+    current_user = session.get("username")
+
+    reminders = get_reminders(session["user_id"])
+
     return render_template(
         "index.html",
-        username=session.get("username")
+        username=current_user,
+        reminders=reminders
     )
 
 
@@ -241,6 +248,19 @@ def export_pdf():
         }
     )
 
+@app.route("/api/reminders")
+@login_required
+def reminders_api():
+    reminders = get_reminders(session["user_id"])
+
+    formatted = []
+    for r in reminders:
+        formatted.append({
+            "bill_name": r["bill_name"],
+            "due_day": r["due_day"]
+        })
+
+    return jsonify(formatted)
 
 if __name__ == "__main__":
     app.run(debug=True)

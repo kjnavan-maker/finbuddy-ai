@@ -341,3 +341,41 @@ def get_random_tip():
     conn.close()
 
     return row["tip"] if row else "Track your expenses daily to stay financially aware."
+
+def add_reminder(user_id, bill_name, due_day):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS reminders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            bill_name TEXT,
+            due_day INTEGER
+        )
+    """)
+    cursor.execute(
+        "INSERT INTO reminders (user_id, bill_name, due_day) VALUES (?, ?, ?)",
+        (user_id, bill_name, due_day)
+    )
+    conn.commit()
+    conn.close()
+
+
+def get_reminders(user_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS reminders (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            bill_name TEXT,
+            due_day INTEGER
+        )
+    """)
+    cursor.execute(
+        "SELECT bill_name, due_day FROM reminders WHERE user_id = ? ORDER BY due_day",
+        (user_id,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+    return rows  

@@ -19,7 +19,9 @@ from database import (
     save_learned_response,
     get_learned_responses,
     save_user_profile,
-    get_user_profile
+    get_user_profile,
+    add_reminder,
+    get_reminders,
 )
 
 from model_training import train_model
@@ -223,55 +225,60 @@ class FinBuddyAI:
         if not rows:
             return (
                 "📈 Monthly Financial Overview\n\n"
-                "I don’t see any expenses recorded for this month yet.\n\n"
-                "Once you share your monthly expenses, I can calculate your total spending, remaining budget, savings ratio, and financial health."
+                "No expenses recorded for this month yet."
             )
 
         total = sum(row["total"] for row in rows)
         top = rows[0]
 
         lines = []
-        lines.append("📈 Monthly Financial Overview")
+
+        lines.append("📊 Monthly Financial Overview")
         lines.append("")
-        lines.append(f"Total Monthly Expenses: Rs.{total:,.0f}")
+
+        lines.append(f"💸 Total Expenses: Rs.{total:,.0f}")
 
         if salary:
-            balance_after_expenses = salary - total
-            lines.append(f"Monthly Income: Rs.{salary:,.0f}")
-            lines.append(f"Balance After Expenses: Rs.{balance_after_expenses:,.0f}")
+            lines.append(f"💰 Monthly Income: Rs.{salary:,.0f}")
+            lines.append(f"✅ Remaining Balance: Rs.{salary - total:,.0f}")
 
         if savings:
-            lines.append(f"Monthly Savings: Rs.{savings:,.0f}")
+            lines.append(f"🏦 Monthly Savings: Rs.{savings:,.0f}")
 
         lines.append("")
-        lines.append("Spending Breakdown:")
+        lines.append("📂 Spending Breakdown")
 
         for row in rows:
-            lines.append(f"• {row['category'].title()}: Rs.{row['total']:,.0f}")
+            lines.append(
+                f"• {row['category'].title()}: Rs.{row['total']:,.0f}"
+            )
 
         lines.append("")
-        lines.append(f"Highest Spending Category: {top['category'].title()}")
+        lines.append(
+            f"🏆 Highest Spending Category: {top['category'].title()}"
+        )
 
         if budget:
             remaining = budget - total
-            lines.append(f"Monthly Budget: Rs.{budget:,.0f}")
+
+            lines.append(f"📌 Monthly Budget: Rs.{budget:,.0f}")
 
             if remaining >= 0:
-                lines.append(f"Remaining Budget: Rs.{remaining:,.0f}")
+                lines.append(
+                    f"✅ Remaining Budget: Rs.{remaining:,.0f}"
+                )
             else:
-                lines.append(f"⚠️ Budget Exceeded By: Rs.{abs(remaining):,.0f}")
+                lines.append(
+                    f"⚠️ Budget Exceeded By: Rs.{abs(remaining):,.0f}"
+                )
 
         if salary:
-            expense_ratio = (total / salary) * 100
-            lines.append("")
-            lines.append(f"Expense Ratio: {expense_ratio:.1f}% of income")
+            ratio = (total / salary) * 100
 
-            if expense_ratio > 80:
-                lines.append("Recommendation: Your expenses are very high. Try reducing non-essential spending.")
-            elif expense_ratio > 60:
-                lines.append("Recommendation: Your expenses are manageable, but savings can still be improved.")
-            else:
-                lines.append("Recommendation: Your spending looks well controlled compared to your income.")
+            lines.append("")
+            lines.append(
+                f"📊 Expense Ratio: {ratio:.1f}% of income"
+            )
 
         return "\n".join(lines)
 
@@ -547,6 +554,44 @@ class FinBuddyAI:
             f"before buying a {selected_goal}, check whether it is a need or want and protect your emergency savings."
         )
 
+    def reminder_handler(self, user_id, message):
+        if "show reminders" in message or "my reminders" in message:
+            rows = get_reminders(user_id)
+
+            if not rows:
+                return "You have no bill reminders yet."
+
+            text = "🔔 Your Bill Reminders:\n\n"
+            for row in rows:
+                text += f"• {row['bill_name']} - every month on {row['due_day']}\n"
+
+            return text
+
+        if "remind" in message or "reminder" in message:
+            day_match = re.search(r"(\d{1,2})(?:st|nd|rd|th)?", message)
+
+            if not day_match:
+                return "Please mention the due date. Example: Remind me to pay electricity bill on 25th"
+
+            due_day = int(day_match.group(1))
+
+            if "electricity" in message:
+                bill_name = "Electricity Bill"
+            elif "rent" in message or "house rent" in message:
+                bill_name = "House Rent"
+            elif "credit card" in message:
+                bill_name = "Credit Card Bill"
+            elif "emi" in message:
+                bill_name = "EMI Payment"
+            else:
+                bill_name = "Bill Payment"
+
+            add_reminder(user_id, bill_name, due_day)
+
+            return f"🔔 Reminder saved: {bill_name} on day {due_day} of every month."
+
+        return None
+
     def reply(self, user_id, message):
         message = message.lower().strip()
 
@@ -580,51 +625,106 @@ class FinBuddyAI:
         savings_reply = self.savings_handler(user_id, message)
         if savings_reply:
             return {"reply": savings_reply, "intent": "savings_saved"}
+        
+        reminder_reply = self.reminder_handler(user_id, message)
+        if reminder_reply:
+            return {"reply": reminder_reply, "intent": "bill_reminder"}
 
-        # 4. Expense add
+       # 4. Expense add
         amount, category = self.parse_expense(message)
         if amount and category:
             add_expense(user_id, amount, category, message)
+            
+            profile = get_user_profile(user_id)
+            budget = get_budget(user_id)
+            rows = get_monthly_expenses(user_id)
+            salary = float(profile.get("salary") or 0)
+            total = sum(row["total"] for row in rows)
 
+            warning = ""
+
+            if budget:
+                remaining = budget - total
+
+                if remaining < 0:
+                     warning = (
+                          f"\n\n🚨 Budget Alert!\n"
+                          f"You exceeded your monthly budget by Rs.{abs(remaining):,.0f}.\n"
+                          "Please reduce unnecessary spending."
+                        )
+
+                elif remaining <= budget * 0.2:
+                     warning += (
+                         f"\n\n⚠️ Budget Warning!\n"
+                         f"Only Rs.{remaining:,.0f} remaining in your monthly budget.\n"
+                         "Be careful with extra spending."
+                        )
+
+            if salary:
+                 remaining_income = salary - total
+
+                 if remaining_income < 0:
+                       warning += (
+                            f"\n\n🚨 Spending Alert!\n"
+                            f"You exceeded your monthly income by Rs.{abs(remaining_income):,.0f}."
+                        )
+                 elif remaining_income <= salary * 0.1:
+                       warning += (
+                       f"\n\n⚠️ Spending Warning!\n"
+                       f"Only Rs.{remaining_income:,.0f} remaining from your monthly income."
+                      )
             return {
                 "reply": (
-                    f"✅ Expense recorded successfully.\n\n"
-                    f"Category: {category.title()}\n"
-                    f"Amount: Rs.{amount:,.0f}\n\n"
-                    f"{self.recommendation(user_id)}"
+                        f"✅ Expense recorded successfully.\n\n"
+                        f"Category: {category.title()}\n"
+                        f"Amount: Rs.{amount:,.0f}"
+                        f"{warning}\n\n"
+                        f"{self.recommendation(user_id)}"
                 ),
                 "intent": "add_expense"
             }
 
-        # 5. Budget set/check
-        if "set budget" in message or message.startswith("budget ") or "my budget" in message:
-            amount = self.parse_number(message)
+          # Set budget
+        budget_match = re.search(r"set budget\s*(\d+)", message)
 
-            if amount:
+        if budget_match:
+                amount = float(budget_match.group(1))
+
                 set_budget(user_id, amount)
 
                 return {
-                    "reply": (
-                        f"📌 Your monthly budget has been set to Rs.{amount:,.0f}.\n\n"
-                        "I’ll compare your expenses with this budget and help you stay on track."
+                   "reply": (
+                       f"✅ Monthly budget set successfully.\n\n"
+                       f"Budget Amount: Rs.{amount:,.0f}"
                     ),
-                    "intent": "budget_set"
+                   "intent": "set_budget"
                 }
-
+        # 5. Budget set/check
+        if any(x in message for x in ["budget warning", "warning", "budget alert"]):
             budget = get_budget(user_id)
+            rows = get_monthly_expenses(user_id)
 
-            if budget:
-                return {
-                    "reply": (
-                        f"Your current monthly budget is Rs.{budget:,.0f}.\n\n"
-                        f"{self.monthly_summary_text(user_id)}"
-                    ),
-                    "intent": "budget_help"
-                }
+            total = sum(row["total"] for row in rows)
+            remaining = budget - total
+
+            if remaining <= budget * 0.2:
+                 return {
+                      "reply": (
+                      "⚠️ Budget Warning\n\n"
+                      "You are close to your monthly budget limit.\n\n"
+                      f"Remaining Budget: Rs.{remaining:,.0f}\n\n"
+                     "Please reduce unnecessary spending."
+                 ),
+                      "intent": "budget_warning"
+            }
 
             return {
-                "reply": "To set your monthly budget, type something like: set budget 50000.",
-                "intent": "budget_help"
+                 "reply": (
+                 "✅ Budget Safe\n\n"
+                 f"You still have Rs.{remaining:,.0f} remaining.\n\n"
+                 "Your spending is under control."
+            ),
+                 "intent": "budget_warning"
             }
 
         # 6. Monthly summary
@@ -643,7 +743,21 @@ class FinBuddyAI:
         goal_reply = self.goal_advice(user_id, message)
         if goal_reply:
             return {"reply": goal_reply, "intent": "goal_advice"}
-
+         
+         # Saving tips / finance advice
+        if any(x in message for x in ["save money", "saving tips", "how can i save", "finance advice", "money advice"]):
+            return {
+                "reply": (
+                    "💡 Saving Tips\n\n"
+                    "• Track your daily expenses.\n"
+                    "• Avoid unnecessary spending.\n"
+                    "• Set a monthly budget.\n"
+                    "• Save at least 10% to 20% of your income.\n"
+                    "• Reduce food, shopping, and transport overspending.\n"
+                    "• Keep emergency savings for unexpected needs."
+                 ),
+                "intent": "saving_tips"
+            }
         # 10. Recommendation / analysis
         if any(word in message for word in ["recommend", "suggest", "smart advice", "overspending", "analyze"]):
             return {"reply": self.recommendation(user_id), "intent": "recommendation"}
